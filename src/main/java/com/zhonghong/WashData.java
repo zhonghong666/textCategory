@@ -8,7 +8,7 @@ import java.io.*;
  * @date: 2020/9/25
  */
 public class WashData {
-    private static final String REGX = "[`~!@#$%^&*()+=|{}':;',\\[\\].<>/?~！@#￥%……&*（）——+|{}｛｝《》〔〕〖〗「」【】‘；：”“’。，、？\"\\-]";
+    private static final String REGX = "[`~!@#$%^&*()+=|{}':;',\\[\\].<>/?~！@#￥%……&*（）——+|{}｛｝―《》·〔〕『』〖〗「」【】‘；：”“’。，、？\"\\-　]";
     public static void main(String[] args) throws IOException {
         String path = "C:\\Users\\BennyTian\\Desktop\\sample\\";
         String outPath = "C:\\Users\\BennyTian\\Desktop\\wash\\data.txt";
