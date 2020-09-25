@@ -41,7 +41,7 @@ public class Train {
             res = meter.precision();
             // 保存模型
             model.quantize(8, false, false);
-            model.saveModelToSingleFile(new File(String.format(modelName, inputArgs.getLr(), inputArgs.getDim(), inputArgs.getEpoch(), (int)res)));
+            model.saveModelToSingleFile(new File(String.format(modelName, inputArgs.getLr(), inputArgs.getDim(), inputArgs.getEpoch(), (int)(res * 100))));
 
             // 预测分类
             model.predict(Arrays.asList("王一博 的 私人 手机 震动 起来 戚年 微怔，瞧了 一眼 来电 显示 她 乖巧 的 窝在 王一博 怀里 不语".split(" ")), 5, 0).forEach(item -> {
