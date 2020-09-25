@@ -13,18 +13,12 @@ import java.io.File;
  */
 public class Train {
 
+    private static final String BASE_PATH = "C:\\Users\\BennyTian\\Desktop\\textCategory\\";
+
     public static void main(String[] args) {
-        String path = "C:\\Users\\BennyTian\\Desktop\\sample\\";
-        String assessPath = "C:\\Users\\BennyTian\\Desktop\\assess\\";
-        // 读取样本数据
-        File file = new File("C:\\Users\\BennyTian\\Desktop\\wash\\data.txt");
-        /*File[] tempList = file.listFiles();
-        List<FileSampleLineIterable> sampleLineList = Lists.newArrayList();
-        for (File item : tempList) {
-            if (item.isFile()) {
-                sampleLineList.add(new FileSampleLineIterable(new File(path + item.getName())));
-            }
-        }*/
+        // 读取训练数据
+        File file = new File(BASE_PATH + "train.txt");
+
         // 构建训练参数
         InputArgs inputArgs = new InputArgs();
         // 分层softmax
@@ -35,9 +29,9 @@ public class Train {
         // 训练模型
         FastText model = FastText.trainSupervised(file, inputArgs);
         // 评估模型
-        model.test(new File(assessPath + "assess.txt"), 1, 0, true);
+        model.test(new File(BASE_PATH + "assess.txt"), 1, 0, true);
         // 保存模型
         model.quantize(2, false, false);
-        model.saveModelToSingleFile(new File("C:\\Users\\BennyTian\\Desktop\\model\\textCategory.model"));
+        model.saveModelToSingleFile(new File(BASE_PATH + "model\\textCategory.model"));
     }
 }
