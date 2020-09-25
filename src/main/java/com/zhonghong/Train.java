@@ -27,7 +27,8 @@ public class Train {
         }*/
         // 构建训练参数
         InputArgs inputArgs = new InputArgs();
-        inputArgs.setLoss(LossName.softmax);
+        // 分层softmax
+        inputArgs.setLoss(LossName.hs);
         inputArgs.setLr(0.3);
         inputArgs.setDim(1000);
         inputArgs.setEpoch(20);
