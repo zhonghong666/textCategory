@@ -28,9 +28,10 @@ public class Train {
         // 分层softmax
         inputArgs.setLoss(LossName.hs);
         inputArgs.setLr(1.0);
-        inputArgs.setDim(256);
+        inputArgs.setDim(64);
         inputArgs.setEpoch(50);
-//        inputArgs.setWordNgrams(2);
+        inputArgs.setWordNgrams(2);
+        inputArgs.setThread(20);
         double target = 0.95;
         double res = 0;
         while (res < target) {
