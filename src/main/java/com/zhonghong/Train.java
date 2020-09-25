@@ -5,6 +5,7 @@ import com.mayabot.nlp.fasttext.args.InputArgs;
 import com.mayabot.nlp.fasttext.loss.LossName;
 
 import java.io.File;
+import java.util.Arrays;
 
 /**
  * @author: zhonghong
@@ -26,6 +27,7 @@ public class Train {
         inputArgs.setLr(0.3);
         inputArgs.setDim(1000);
         inputArgs.setEpoch(20);
+        inputArgs.setThread(20);
         // 训练模型
         FastText model = FastText.trainSupervised(file, inputArgs);
         // 评估模型
@@ -33,5 +35,10 @@ public class Train {
         // 保存模型
         model.quantize(2, false, false);
         model.saveModelToSingleFile(new File(BASE_PATH + "model\\textCategory.model"));
+
+        // 预测分类
+        model.predict(Arrays.asList("王一博 的 私人 手机 震动 起来 戚年 微怔，瞧了 一眼 来电 显示 她 乖巧 的 窝在 王一博 怀里 不语".split(" ")), 5, 0).forEach(item -> {
+            System.out.println("label ==> " + item.getLabel() + '\t' + "score ==> " + item.getScore());
+        });
     }
 }
