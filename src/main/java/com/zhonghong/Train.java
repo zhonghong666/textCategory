@@ -27,8 +27,8 @@ public class Train {
         InputArgs inputArgs = new InputArgs();
         // 分层softmax
         inputArgs.setLoss(LossName.hs);
-        inputArgs.setLr(1.0);
-        inputArgs.setDim(64);
+        inputArgs.setLr(0.2);
+        inputArgs.setDim(256);
         inputArgs.setEpoch(50);
         inputArgs.setWordNgrams(2);
         inputArgs.setThread(20);
@@ -48,8 +48,8 @@ public class Train {
             model.predict(Arrays.asList("王一博 的 私人 手机 震动 起来 戚年 微怔，瞧了 一眼 来电 显示 她 乖巧 的 窝在 王一博 怀里 不语".split(" ")), 5, 0).forEach(item -> {
                 System.out.println("label ==> " + item.getLabel() + '\t' + "score ==> " + item.getScore());
             });
-            inputArgs.setLr(inputArgs.getLr() - 0.5);
-            if (inputArgs.getLr() <= 0) {
+            inputArgs.setDim(inputArgs.getDim() + 100);
+            if (inputArgs.getDim() >= 1000) {
                 return;
             }
         }
